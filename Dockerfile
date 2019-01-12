@@ -1,11 +1,13 @@
 FROM golang:alpine as builder
 RUN apk add --no-cache git
-COPY . /src
-WORKDIR /src
+RUN mkdir /build
+ADD . /build/
+WORKDIR /build
 RUN go mod download
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -a -installsuffix cgo
-# RUN go build
+
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o main .
 
 FROM scratch
-COPY --from=builder ./src/go-bank ./app
-CMD ["./app"]
+COPY --from=builder /build /app/
+WORKDIR /app
+CMD ["./main"]

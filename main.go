@@ -15,6 +15,7 @@ func main() {
 
 	r.GET("/note/:hash", func(c *gin.Context) {
 		hash := c.Params.ByName("hash")
+
 		if val, ok := secrets[hash]; ok {
 			c.HTML(http.StatusOK, "note.tmpl", gin.H{
 				"note": val,
