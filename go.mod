@@ -9,6 +9,7 @@ require (
 	github.com/go-siris/siris v7.4.0+incompatible // indirect
 	github.com/golang/protobuf v1.2.0 // indirect
 	github.com/google/pprof v0.0.0-20190109223431-e84dfd68c163 // indirect
+	github.com/google/uuid v1.1.0
 	github.com/ianlancetaylor/demangle v0.0.0-20181102032728-5e5cf60278f6 // indirect
 	github.com/jessevdk/go-assets v0.0.0-20160921144138-4f4301a06e15
 	github.com/labstack/echo v3.3.5+incompatible // indirect
